@@ -12,13 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-public class RegistrationController {
-
-    private final UserService userService;
+public record RegistrationController(UserService userService) {
 
     @Autowired
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
+    public RegistrationController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)

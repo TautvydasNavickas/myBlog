@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommentServiceImp implements CommentService {
-
-    private final CommentRepository commentRepository;
+public record CommentServiceImp(
+        CommentRepository commentRepository) implements CommentService {
 
     @Autowired
-    public CommentServiceImp(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
+    public CommentServiceImp {
     }
 
     @Override

@@ -14,13 +14,10 @@ import java.util.Optional;
 
 
 @Service
-public class PostServiceImp implements PostService {
-
-    private final PostRepository postRepository;
+public record PostServiceImp(PostRepository postRepository) implements PostService {
 
     @Autowired
-    public PostServiceImp(PostRepository postRepository) {
-        this.postRepository = postRepository;
+    public PostServiceImp {
     }
 
     @Override
@@ -48,7 +45,7 @@ public class PostServiceImp implements PostService {
         postRepository.delete(post);
     }
 
-    private int subtractPageByOne(int page){
+    private int subtractPageByOne(int page) {
         return (page < 1) ? 0 : page - 1;
     }
 }

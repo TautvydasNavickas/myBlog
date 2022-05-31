@@ -12,17 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class HomeController {
-
-    private  PostService postService;
+public record HomeController(PostService postService) {
 
     @Autowired
-    public HomeController(PostService postService) {
-        this.postService = postService;
+    public HomeController {
     }
 
     @GetMapping("/home")
-    public String home (@RequestParam(defaultValue = "0") int page,
+    public String home(@RequestParam(defaultValue = "0") int page,
                        Model model) {
 
         Page<Post> posts = postService.findAllOrderedByDatePageable(page);

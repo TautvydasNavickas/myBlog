@@ -19,15 +19,11 @@ import java.util.Optional;
 
 
 @Controller
-public class BlogController {
-
-    private final UserService userService;
-    private final PostService postService;
+public record BlogController(UserService userService,
+                             PostService postService) {
 
     @Autowired
-    public BlogController(UserService userService, PostService postService) {
-        this.userService = userService;
-        this.postService = postService;
+    public BlogController {
     }
 
     @RequestMapping(value = "/blog/{username}", method = RequestMethod.GET)

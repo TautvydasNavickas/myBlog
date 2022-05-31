@@ -17,14 +17,15 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
+    private PasswordEncoder passwordEncoder;
 
     private static final String USER_ROLE = "ROLE_USER";
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImp(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -40,6 +41,8 @@ public class UserServiceImp implements UserService {
     @Override
     public User save(User user) {
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setActive(1);
         user.setRoles(Collections.singletonList(roleRepository.findByRole(USER_ROLE)));
         return userRepository.saveAndFlush(user);
     }

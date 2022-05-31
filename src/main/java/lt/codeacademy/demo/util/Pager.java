@@ -4,13 +4,7 @@ package lt.codeacademy.demo.util;
 import lt.codeacademy.demo.entity.Post;
 import org.springframework.data.domain.Page;
 
-public class Pager {
-
-    private final Page<Post> posts;
-
-    public Pager(Page<Post> posts) {
-        this.posts = posts;
-    }
+public record Pager(Page<Post> posts) {
 
     public int getPageIndex() {
         return posts.getNumber() + 1;
