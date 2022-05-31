@@ -1,8 +1,8 @@
 package lt.codeacademy.demo.entity;
 
-import org.apache.tomcat.jni.User;
+
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.validator.constraints.NotEmpty;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

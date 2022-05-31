@@ -1,6 +1,5 @@
 package lt.codeacademy.demo.entity;
 
-import org.apache.tomcat.jni.User;
 
 import javax.persistence.*;
 import java.util.Collection;
