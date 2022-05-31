@@ -22,7 +22,6 @@ import java.util.Optional;
 public class BlogController {
 
     private final UserService userService;
-
     private final PostService postService;
 
     @Autowired
